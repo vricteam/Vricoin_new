@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Vricoin
+Comment=Vricoin P2P Cryptocurrency
+Exec=vricoin-qt %u
+Terminal=false
+Type=Application
+Icon=vricoin128
+MimeType=x-scheme-handler/vricoin;
+Categories=Office;Finance;
+Name[ru]=vricoin-qt.desktop.desktop

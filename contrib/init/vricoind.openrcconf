@@ -1,0 +1,26 @@
+# /etc/conf.d/vricoind: config file for /etc/init.d/vricoind
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/vricoin/vricoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/vricoind"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/vricoind.pid"
+
+# Where to write vricoind data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/vricoind"
+
+# User and group to own vricoind process
+#BITCOIND_USER="vricoin"
+#BITCOIND_GROUP="vricoin"
+
+# Path to vricoind executable
+#BITCOIND_BIN="/usr/bin/vricoind"
+
+# Nice value to run vricoind under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

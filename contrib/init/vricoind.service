@@ -1,0 +1,26 @@
+[Unit]
+Description=Vricoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=vricoin
+Group=vricoin
+
+Type=forking
+PIDFile=/var/lib/vricoind/vricoind.pid
+
+ExecStart=/usr/bin/vricoind -daemon -pid=/var/lib/vricoind/vricoind.pid \
+          -conf=/etc/vricoin/vricoin.conf -datadir=/var/lib/vricoind
+
+ExecStop=-/usr/bin/vricoin-cli -conf=/etc/vricoin/vricoin.conf \
+         -datadir=/var/lib/vricoind stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
