@@ -98,11 +98,9 @@ public:
         pchMessageStart[0] = 0xa2;
         pchMessageStart[1] = 0x33;
         pchMessageStart[2] = 0xc8;
-        pchMessageStart[3] = 0x92;
-        //vAlertPubKey = ParseHex("0214a345c9add950bc2a23c569c40f029eb8d0385c86cfcc830a872737a98e6a5f");
+        pchMessageStart[3] = 0x92;        
         vAlertPubKey = ParseHex("0409d32dc156897ad19af6ffcb84c72c160a187b26d1a612945472cbd98b517ad634e00a28e96e38c180e13728a6d0deea334110ce7fa248acd4edbc48884ebeed");
-        
-        //nDefaultPort = 9888;
+                
         nDefaultPort = 9888;
         
         bnProofOfWorkLimit = ~uint256(0) >> 20;        
@@ -118,13 +116,12 @@ public:
         // nAntiInstamineTime = 50; // 720 blocks with 1 reward for instamine prevention
         nMaturity = 228;
         nMasternodeCountDrift = 3;
-        //nMaxMoneyOut = 21000000 * COIN;
+        
         nMaxMoneyOut = 14000000000 * COIN;
 
         nStartMasternodePaymentsBlock = 200;
 
-        /** Height or Time Based Activations **/
-        //nLastPOWBlock = 2000;
+        /** Height or Time Based Activations **/        
         nLastPOWBlock = 751;
         nModifierUpdateBlock = std::numeric_limits<decltype(nModifierUpdateBlock)>::max();
 
@@ -137,15 +134,13 @@ public:
          *     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d01044c5957697265642030392f4a616e2f3230313420546865204772616e64204578706572696d656e7420476f6573204c6976653a204f76657273746f636b2e636f6d204973204e6f7720416363657074696e6720426974636f696e73)
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
-         */
-        //const char* pszTimestamp = "the new yoek times - New Russian Hacking Targeted Republican Groups, Microsoft Says";
+         */        
         const char* pszTimestamp = "vricoin 2019 01 31";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 50 * COIN;
-        //txNew.vout[0].scriptPubKey = CScript() << ParseHex("044a001040da79684a0544c2254eb6c896fae95a9ea7b51d889475eb57ab2051f1a5858cac61ae400e90ea08015263ad40c65d36f0edf19e996972e7d2cbd13c15") << OP_CHECKSIG;
+        txNew.vout[0].nValue = 50 * COIN;        
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("045892452aca76c9e64fde9ed7a86967e3964737d3d74d20faf845a4b7db1fb1d417020dd79b3f6f3df02fdaeba80686fc93f9f512222cdf0a528ec7574debe678") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
@@ -156,58 +151,17 @@ public:
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 4290085;
 
-        /////////GENESIS MINING 3 ///////////////
-        ///*
-    #ifdef DEFINE_MAKE_GENESIS_BLOCK
-        printf("\nGenesis mining started\n");
-
-        hashGenesisBlock = genesis.GetHash();
-        if(genesis.GetHash() != uint256("0x"))
-        {
-			printf("MSearching for genesis block...\n");
-			uint256 hashTarget;
-			hashTarget.SetCompact(genesis.nBits);
-			while(uint256(genesis.GetHash()) > uint256(hashTarget))
-			{
-				++genesis.nNonce;
-				if (genesis.nNonce == 0)
-				{
-					printf("Mainnet NONCE WRAPPED, incrementing time");
-					std::cout << std::string("Mainnet NONCE WRAPPED, incrementing time:\n");
-					++genesis.nTime;
-				}
-				if (genesis.nNonce % 10000 == 0)
-				{
-				   printf("Mainnet: nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
-				}
-			}
-			printf("Mainnet block.nTime = %u \n", genesis.nTime);
-			printf("Mainnet block.nNonce = %u \n", genesis.nNonce);
-			printf("Mainnet block.hashMerkleRoot: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-			printf("Mainnet block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
-        }
-    #endif
-        //*/
-
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("00000d9dc3ba521a7557585ceeecab0e1a328fe6b678bc30c8ffd41ac40d6f7e"));
         assert(genesis.hashMerkleRoot == uint256("53b0b52d4b0a04d1ec901a008f4b8fd607a69df57c2aaf8c6c46891cb1935711"));
-        
-        //vSeeds.push_back(CDNSSeedData("13.124.211.151", "13.124.211.151"));
-        //vSeeds.push_back(CDNSSeedData("13.209.100.249", "13.209.100.249"));
-        //vSeeds.push_back(CDNSSeedData("54.180.0.178", "54.180.0.178"));
-        //vSeeds.push_back(CDNSSeedData("52.78.6.181", "52.78.6.181"));
-        //vSeeds.push_back(CDNSSeedData("13.124.100.165", "13.124.100.165"));
-        //vSeeds.push_back(CDNSSeedData("54.180.136.242", "54.180.136.242"));
-
+                
         vSeeds.push_back(CDNSSeedData("52.78.37.10", "52.78.37.10"));
         vSeeds.push_back(CDNSSeedData("54.180.128.97", "54.180.128.97"));
         vSeeds.push_back(CDNSSeedData("52.78.76.142", "52.78.76.142"));
         vSeeds.push_back(CDNSSeedData("52.79.188.120", "52.79.188.120"));
         vSeeds.push_back(CDNSSeedData("13.124.235.106", "13.124.235.106"));
         vSeeds.push_back(CDNSSeedData("52.79.253.70", "52.79.253.70"));
-
-        //base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 55);   // P
+        
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 70);    // V
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 8);
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 117); // p
@@ -228,8 +182,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "0228344aa5b39cc8fed8a8adcf8fe5616584e6b49b2008f47a166f509a51e7ead9";
-        //strObfuscationPoolDummyAddress = "PSDj2gC9j6nNrnzCsg4aY6bHMLsT9nUhEw";
+        strSporkKey = "0228344aa5b39cc8fed8a8adcf8fe5616584e6b49b2008f47a166f509a51e7ead9";        
         strObfuscationPoolDummyAddress = "VSDj2gC9j6nNrnzCsg4aY6bHMLsT9nUhEw";
         nStartMasternodePayments = 1548916268; //Wed, 25 Jun 2014 20:36:16 GMT
 
@@ -259,8 +212,7 @@ public:
 
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         bnStartWork = bnProofOfWorkLimit;
-
-        //vAlertPubKey = ParseHex("04459DC949A9E2C2E1FA87ED9EE93F8D26CD52F95853EE24BCD4B07D4B7D79458E81F0425D81E52B797ED304A836667A1D2D422CD10F485B06CCBE906E1081FBAC");
+        
         vAlertPubKey = ParseHex("045892452aca76c9e64fde9ed7a86967e3964737d3d74d20faf845a4b7db1fb1d417020dd79b3f6f3df02fdaeba80686fc93f9f512222cdf0a528ec7574debe678");
         nDefaultPort = 19888;
         nEnforceBlockUpgradeMajority = 51;
